@@ -48,7 +48,8 @@ package body Unipolar_Stepper_Motor_Package is
 
       case Motor.Coil_Position is
 
-         --  step
+      --  step
+
       when 1 =>
          STM32.GPIO.Set (Motor.IN1);
          STM32.GPIO.Clear (Motor.IN2);
@@ -130,6 +131,7 @@ package body Unipolar_Stepper_Motor_Package is
 
 
 
+
    procedure Step (Motor                : in out Unipolar_Stepper_Motor;
                    Number_Of_Steps      : in Positive;
                    Direction            : in Type_Direction := Clockwise;
@@ -150,6 +152,7 @@ package body Unipolar_Stepper_Motor_Package is
                          Span_Delay           : Standard.Duration := 0.001) is -- delay between each step to determine the speed
 
    begin
+
       Motor.Step (Number_Of_Steps => Positive ( Float (Steps_Per_Revolution * (if Step_Type = Step then 1 else 2)) * Float (Angle) / 360.0),
                   Direction      => Direction,
                   Step_Type      => Step_Type,
