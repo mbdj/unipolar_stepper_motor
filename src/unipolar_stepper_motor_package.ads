@@ -11,7 +11,7 @@ package Unipolar_Stepper_Motor_Package is
 
    type Unipolar_Stepper_Motor is tagged limited private;
    type Type_Direction is (Clockwise, Anti_Clockwise);
-   type Type_Step is (Step, Half_Step);  -- half step = more couple but half the speed
+   type Type_Step is (Step, Half_Step);  -- half step = more torque but half the speed
 
    procedure Initialize (Motor              : in out Unipolar_Stepper_Motor;
                          --  IN1 .. IN4 : connection to the driver (ULN2003)
