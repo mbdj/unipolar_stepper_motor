@@ -24,8 +24,8 @@ package body Stepper_Motor is
          Moteur.Step (Number_Of_Steps => 2048,
                       Direction      => Anti_Clockwise);
 
-         Moteur.Step_Angle (Angle => 90.0, Span_Delay => 0.005);
-         Moteur.Step_Angle (Angle => 180.0,  Span_Delay => 0.005, Direction => Anti_Clockwise);
+         Moteur.Step_Angle (Angle => 90.0);
+         Moteur.Step_Angle (Angle => 180.0, Direction => Anti_Clockwise);
 
          Moteur.Step_Angle (Angle => 360.0, Step_Type => Half_Step);
          Moteur.Step_Angle (Angle => 180.0,  Step_Type => Half_Step, Direction => Anti_Clockwise);

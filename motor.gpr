@@ -1,9 +1,9 @@
-with "..\..\AdaLib\Ada_Drivers_Library-master\boards\nucleo_f446re\nucleo_f446re_full.gpr";
+with "C:\Users\mbdj\Dev\AdaLib\Ada_Drivers_Library-master\boards\nucleo_f446re\nucleo_f446re_full.gpr";
 with "config/motor_config.gpr";
 
 project Motor is
 
-   for Source_Dirs use ("src", "config", "../../AdaLib/OLED/fonts", "../../AdaLib/OLED/SSD1306_v2", "../../AdaLib/stm32/src", "../../AdaLib/spi", "../../AdaLib/OLED/ST7735");
+   for Source_Dirs use ("src", "config", "C:\Users\mbdj\Dev/AdaLib/OLED/fonts", "C:\Users\mbdj\Dev/AdaLib/OLED/SSD1306_v2", "C:\Users\mbdj\Dev/AdaLib/stm32/src", "C:\Users\mbdj\Dev/AdaLib/spi", "C:\Users\mbdj\Dev/AdaLib/OLED/ST7735");
    for Object_Dir use "obj/" & Motor_Config.Build_Profile;
    for Create_Missing_Dirs use "True";
    for Exec_Dir use "bin";
@@ -32,4 +32,3 @@ project Motor is
    end Ide;
 
 end Motor;
-

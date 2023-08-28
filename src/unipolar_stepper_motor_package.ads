@@ -15,24 +15,23 @@ package Unipolar_Stepper_Motor_Package is
 
    procedure Initialize (Motor              : in out Unipolar_Stepper_Motor;
                          --  IN1 .. IN4 : connection to the driver (ULN2003)
-                         IN1, IN2, IN3, IN4 : in STM32.GPIO.GPIO_Point);
+                         IN1, IN2, IN3, IN4 : in STM32.GPIO.GPIO_Point;
+                         Span_Delay      : Standard.Duration := 0.001);  --  nb : Span_Delay : delay of signal application
+                                                                         --  elsewhere the motor can't rotate
 
    ----------
    -- Step --
    ----------
    --  rotation of one step
-   -- nb : Span_Delay : 1 ms minimum else the motor can't rotate
    procedure Step (Motor           : in out Unipolar_Stepper_Motor;
                    Direction       : in Type_Direction := Clockwise;
-                   Step_Type       : in Type_Step := Step;
-                   Span_Delay      : Standard.Duration := 0.001);
+                   Step_Type       : in Type_Step := Step);
 
    --  rotation of multiple steps
    procedure Step (Motor            : in out Unipolar_Stepper_Motor;
                    Number_Of_Steps  : in Positive;
                    Direction        : in Type_Direction := Clockwise;
-                   Step_Type        : in Type_Step := Step;
-                   Span_Delay       : Standard.Duration := 0.001);
+                   Step_Type        : in Type_Step := Step);
 
    --  rotation of an angle in degree
    type Degrees is digits 5 range 0.0 .. 360.0;
@@ -40,8 +39,7 @@ package Unipolar_Stepper_Motor_Package is
                          Angle                             : in Degrees ;
                          Steps_Per_Revolution              : in Positive := 2048 ;  --  for 28BYJ-48 in step (not in half step)
                          Direction                         : in Type_Direction := Clockwise;
-                         Step_Type                         : in Type_Step := Step;
-                         Span_Delay                        : Standard.Duration := 0.001); -- delay between each step to determine the speed
+                         Step_Type                         : in Type_Step := Step);
 
 
 private
@@ -52,6 +50,7 @@ private
       record
          Coil_Position      : Coil_Position_Type := 1;
          IN1, IN2, IN3, IN4 : STM32.GPIO.GPIO_Point;
+         Span_Delay         : Standard.Duration := 0.001;
       end record;
 
 end Unipolar_Stepper_Motor_Package;
